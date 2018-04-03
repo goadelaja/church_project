@@ -1,0 +1,25 @@
+const express = require('express');
+const bodyParser = require('body-parser');
+
+const app = express();
+
+// parse incoming requests
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+
+// serve static files from /public
+app.use(express.static(__dirname + '/public'));
+
+//view engine set up
+app.set('view engine', 'pug');
+app.set('views', __dirname + '/views');
+
+// include routes
+var routes = require('./routes/index');
+app.use('/', routes);
+
+
+//server set up
+app.listen(3000, ()=>{
+    console.log('The Server is running on port 3000');
+});

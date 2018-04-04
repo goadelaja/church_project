@@ -11,6 +11,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // serve static files from /public
 app.use(express.static(__dirname + '/public'));
 
+//app.use('/uploads', express.static('uploads'))
+
 //view engine set up
 app.set('view engine', 'pug');
 app.set('views', __dirname + '/views');
